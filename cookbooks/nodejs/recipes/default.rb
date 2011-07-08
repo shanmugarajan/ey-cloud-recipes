@@ -15,7 +15,7 @@ if ['app','app_master','solo'].include?(node[:instance_role])
 
   ey_cloud_report "node.js" do
     message "Setting up node.js"
-  end
+  endn
 
   ey_cloud_report "nodejs" do
     message "configuring nodejs #{version_tag}"
@@ -57,7 +57,7 @@ if ['app','app_master','solo'].include?(node[:instance_role])
   end
   execute "install NPM" do
     command "cd #{source_base_dir} && curl http://npmjs.org/install.sh | sh"
-    not_if { FileTest.exists?("#{install_dir}/node") }
+    not_if { FileTest.exists?("#{install_dir}/npm") }
   end
 end
 
