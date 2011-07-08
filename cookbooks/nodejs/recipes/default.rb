@@ -10,6 +10,7 @@
 if ['app','app_master','solo'].include?(node[:instance_role])
   version_tag     = "v0.4.7"
   source_base_dir = "/data/nodejs"
+  npm_base_dir    = "/data/npm"
   source_dir      = "#{source_base_dir}/#{version_tag}"
   install_dir     = "/usr/local/bin"
 
@@ -22,6 +23,13 @@ if ['app','app_master','solo'].include?(node[:instance_role])
   end
 
   directory "#{source_base_dir}" do
+    owner 'deploy'
+    group 'deploy'
+    mode 0755
+    recursive true
+  end
+
+  directory "#{npm_base_dir}" do
     owner 'deploy'
     group 'deploy'
     mode 0755
@@ -52,12 +60,27 @@ if ['app','app_master','solo'].include?(node[:instance_role])
     not_if { FileTest.exists?("#{install_dir}/node") }
   end
 
+#  ey_cloud_report "nodejs" do
+#    message "Installing NPM"
+#  end
+#  execute "install NPM" do
+#    command "cd #{source_base_dir} && curl http://npmjs.org/install.sh | sh"
+#    not_if { FileTest.exists?("#{install_dir}/npm") }
+#  end
+
   ey_cloud_report "nodejs" do
     message "Installing NPM"
   end
-  execute "install NPM" do
-    command "cd #{source_base_dir} && curl http://npmjs.org/install.sh | sh"
+  # download npm
+  execute "fetch npm from GitHub" do
+    command "git clone http://github.com/isaacs/npm.git #{npm_base_dir}"
+    not_if { FileTest.exists?("#{npm_base_dir}/npm") }
+  end
+  execute "build npm" do
+    command "cd #{npm_base_dir}/npm && make install"
     not_if { FileTest.exists?("#{install_dir}/npm") }
   end
+
+
 end
 
