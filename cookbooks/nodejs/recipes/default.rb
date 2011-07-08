@@ -73,11 +73,11 @@ if ['app','app_master','solo'].include?(node[:instance_role])
   end
   # download npm
   execute "fetch npm from GitHub" do
-    command "git clone http://github.com/isaacs/npm.git #{npm_base_dir}"
-    not_if { FileTest.exists?("#{npm_base_dir}") }
+    command "git clone http://github.com/isaacs/npm.git #{npm_base_dir}/latest"
+    not_if { FileTest.exists?("#{npm_base_dir}/latest") }
   end
   execute "build npm" do
-    command "cd #{npm_base_dir} && make install"
+    command "cd #{npm_base_dir}/latest && make install"
     not_if { FileTest.exists?("#{install_dir}/npm") }
   end
 
