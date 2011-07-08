@@ -22,8 +22,8 @@ if ['app','app_master','solo'].include?(node[:instance_role])
   end
 
   directory "#{source_base_dir}" do
-    owner 'root'
-    group 'root'
+    owner 'deploy'
+    group 'deploy'
     mode 0755
     recursive true
   end
@@ -49,6 +49,10 @@ if ['app','app_master','solo'].include?(node[:instance_role])
   end
   execute "symlink nodejs" do
     command "ln -s #{source_dir}/node #{install_dir}"
+    not_if { FileTest.exists?("#{install_dir}/node") }
+  end
+  execute "install NPM" do
+    command "cd #{source_dir} && curl http://npmjs.org/install.sh | sh"
     not_if { FileTest.exists?("#{install_dir}/node") }
   end
 end
