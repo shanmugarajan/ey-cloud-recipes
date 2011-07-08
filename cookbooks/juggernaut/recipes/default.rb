@@ -19,7 +19,7 @@ if ['app','app_master','solo'].include?(node[:instance_role])
   end
 
   execute "start juggernaut daemon" do
-    command "/sbin/start-stop-daemon --start --background --exec #{install_dir}/juggernaut"
+    command "/sbin/start-stop-daemon --start --background --exec #{install_dir}/juggernaut --chuid root:root"
 #    not_if { FileTest.exists?("#{install_dir}/juggernaut") }
   end
 
