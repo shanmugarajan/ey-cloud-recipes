@@ -4,12 +4,9 @@
 #
 # Install and start Juggernaut server
 #
-# IMPORTANT: This has to run AFTER node.js is isntalled
+# IMPORTANT: This has to run AFTER node.js is installed
 
 if ['app','app_master','solo'].include?(node[:instance_role])
-#  version_tag     = "v0.4.7"
-#  source_base_dir = "/data/nodejs"
-#  source_dir      = "#{source_base_dir}/#{version_tag}"
   install_dir     = "/usr/local/bin"
 
   ey_cloud_report "juggernaut" do
@@ -23,7 +20,7 @@ if ['app','app_master','solo'].include?(node[:instance_role])
 
   execute "start juggernaut daemon" do
     command "/sbin/start-stop-daemon --start --background --exec #{install_dir}/juggernaut"
-    not_if { FileTest.exists?("#{install_dir}/juggernaut") }
+#    not_if { FileTest.exists?("#{install_dir}/juggernaut") }
   end
 
 end
