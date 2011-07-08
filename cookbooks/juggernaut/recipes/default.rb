@@ -10,27 +10,21 @@ if ['app','app_master','solo'].include?(node[:instance_role])
 #  version_tag     = "v0.4.7"
 #  source_base_dir = "/data/nodejs"
 #  source_dir      = "#{source_base_dir}/#{version_tag}"
-#  install_dir     = "/usr/local/bin"
+  install_dir     = "/usr/local/bin"
 
   ey_cloud_report "juggernaut" do
     message "Setting up juggernaut server"
   end
 
-#  ey_cloud_report "nodejs" do
-#    message "configuring nodejs #{version_tag}"
-#  end
-
-#  directory "#{source_base_dir}" do
-#    owner 'root'
-#    group 'root'
-#    mode 0755
-#    recursive true
-#  end
-
-  #
   execute "npm install juggernaut" do
     command "npm install -g juggernaut"
-#    not_if { FileTest.exists?(source_dir) }
+    not_if { FileTest.exists?("#{install_dir}/juggernaut") }
   end
+
+  execute "start juggernaut" do
+    command "#{install_dir}/juggernaut"
+#    not_if { FileTest.exists?("#{install_dir}/juggernaut") }
+  end
+
 end
 
