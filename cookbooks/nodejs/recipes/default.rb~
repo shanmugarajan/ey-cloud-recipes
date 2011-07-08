@@ -15,7 +15,7 @@ if ['app','app_master','solo'].include?(node[:instance_role])
 
   ey_cloud_report "node.js" do
     message "Setting up node.js"
-  endn
+  end
 
   ey_cloud_report "nodejs" do
     message "configuring nodejs #{version_tag}"
