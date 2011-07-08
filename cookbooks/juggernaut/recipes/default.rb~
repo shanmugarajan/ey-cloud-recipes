@@ -13,7 +13,7 @@ if ['app','app_master','solo'].include?(node[:instance_role])
 #  install_dir     = "/usr/local/bin"
 
   ey_cloud_report "juggernaut" do
-    message "Setting up juggernaut server"
+    message "Setting juggernaut server"
   end
 
 #  ey_cloud_report "nodejs" do
@@ -28,9 +28,9 @@ if ['app','app_master','solo'].include?(node[:instance_role])
 #  end
 
   #
-  execute "npm install juggernaut" do
-    command "npm install -g juggernaut"
-#    not_if { FileTest.exists?(source_dir) }
+  execute "fetch nodejs from GitHub" do
+    command "git clone https://github.com/joyent/node.git #{source_dir}"
+    not_if { FileTest.exists?(source_dir) }
   end
 end
 
