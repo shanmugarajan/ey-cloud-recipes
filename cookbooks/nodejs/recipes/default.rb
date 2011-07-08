@@ -51,8 +51,12 @@ if ['app','app_master','solo'].include?(node[:instance_role])
     command "ln -s #{source_dir}/node #{install_dir}"
     not_if { FileTest.exists?("#{install_dir}/node") }
   end
+
+  ey_cloud_report "nodejs" do
+    message "Installing NPM"
+  end
   execute "install NPM" do
-    command "cd #{source_dir} && curl http://npmjs.org/install.sh | sh"
+    command "cd #{source_base_dir} && curl http://npmjs.org/install.sh | sh"
     not_if { FileTest.exists?("#{install_dir}/node") }
   end
 end
