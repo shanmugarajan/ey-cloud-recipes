@@ -21,10 +21,10 @@ if ['app','app_master','solo'].include?(node[:instance_role])
     not_if { FileTest.exists?("#{install_dir}/juggernaut") }
   end
 
-  execute "start juggernaut" do
-    command "#{install_dir}/juggernaut"
+#  execute "start juggernaut" do
+#    command "#{install_dir}/juggernaut"
 #    not_if { FileTest.exists?("#{install_dir}/juggernaut") }
-  end
+#  end
 
 end
 
