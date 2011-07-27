@@ -1,6 +1,4 @@
 <%= @node[:environment][:framework_env] %>:
-  enable_star: 1
-  min_infix_len: 1
   searchd_log_file: /var/log/engineyard/sphinx/<%= @app_name %>/searchd.log
   query_log_file: /var/log/engineyard/sphinx/<%= @app_name %>/query.log
   pid_file: /var/run/sphinx/<%= @app_name %>.pid
