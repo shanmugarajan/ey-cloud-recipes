@@ -6,7 +6,7 @@
 #
 # IMPORTANT: This has to run AFTER node.js is installed
 
-if ['util'].include?(node[:instance_role])
+if ['app','app_master','solo'].include?(node[:instance_role])
   install_dir     = "/usr/local/bin"
 
   ey_cloud_report "juggernaut" do
