@@ -15,7 +15,7 @@ https://github.com/mperham/sidekiq/wiki/Getting-Started
 To install Sidekiq to your environment, first uncomment the following line in `main/recipes/default.rb`:
 
 ```
-require_recipe "sidekiq"
+include_recipe "sidekiq"
 ```
 
 Next, update the settings in `sidekiq/attributes/default.rb`:
@@ -55,7 +55,7 @@ You will need to add a deploy hook to restart Sidekiq during deploys. Add the fo
 
 ```
 on_utilities("sidekiq") do
-  sudo "monit restart all -g sidekiq_<app_name>"
+  sudo "monit restart all -g <app_name>_sidekiq"
 end
 ```
 
@@ -63,7 +63,7 @@ If Sidekiq is installed on your application instances, rather than a utility ins
 
 ```
 on_app_servers do
-  sudo "monit restart all -g sidekiq_<app_name>"
+  sudo "monit restart all -g <app_name>_sidekiq"
 end
 ```
 

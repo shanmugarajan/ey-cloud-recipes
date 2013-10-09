@@ -4,8 +4,11 @@
 #  }
 #end
 
-# uncomment to turn on thinking sphinx/ultra sphinx. Remember to edit cookbooks/sphinx/recipes/default.rb first!
+# uncomment to turn on thinking sphinx 2/ultra sphinx. Remember to edit cookbooks/sphinx/recipes/default.rb first!
 # include_recipe "sphinx"
+
+# uncomment to turn on thinking sphinx 3. See cookbooks/thinking-sphinx-3/readme.md for documentation.
+# include_recipe "thinking-sphinx-3"
 
 # uncomment to use the collectd recipe. See cookbooks/collectd/readme.md for documentation.
 # include_recipe "collectd"
@@ -13,10 +16,8 @@
 # uncomment to use the block recipe. See cookbooks/block/readme.md for documentation.
 # include_recipe "ban"
 
-include_recipe 'ey-open-ports'
-
 # uncomment to use the sidekiq recipe. See cookbooks/sidekiq/readme.md for documentation.
-include_recipe "sidekiq"
+# include_recipe "sidekiq"
 
 #uncomment to turn on memcached
 # include_recipe "memcached"
@@ -34,7 +35,7 @@ include_recipe "sidekiq"
 #include_recipe "ssmtp"
 
 #uncomment to run the sunspot recipe
-include_recipe "sunspot"
+# include_recipe "sunspot"
 
 #uncomment to run the exim recipe
 #exim_auth "auth" do
@@ -62,10 +63,7 @@ include_recipe "sunspot"
 # include_recipe "resque-scheduler"
 
 #uncomment to run the redis recipe
-include_recipe "redis"
-
-#uncomment to run the juggernaut recipe
-include_recipe "juggernaut"
+#include_recipe "redis"
 
 #uncomment to run the api-keys-yml recipe
 # include_recipe "api-keys-yml"
