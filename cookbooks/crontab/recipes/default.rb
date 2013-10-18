@@ -11,6 +11,7 @@ if ['util'].include?(node[:instance_role])
     day      '*'
     month    '*'
     weekday  '*'
+    user     'deploy'
     command  "cd /data/tweetingdead/current && RAILS_ENV=staging bundle exec rake twitter:quick_realtime &"
   end
 
@@ -20,6 +21,7 @@ if ['util'].include?(node[:instance_role])
     day      '*'
     month    '*'
     weekday  '*'
+    user     'deploy'
     command  "cd /data/tweetingdead/current && RAILS_ENV=staging bundle exec rake twitter:quick_tweetingdead &"
   end
 
@@ -29,6 +31,7 @@ if ['util'].include?(node[:instance_role])
     day      '*'
     month    '*'
     weekday  '*'
+    user     'deploy'
     command  "cd /data/tweetingdead/current && RAILS_ENV=staging bundle exec rake monit:staging_twitter_real_time &"
   end
 
@@ -47,6 +50,7 @@ if ['util'].include?(node[:instance_role])
     day      '*'
     month    '*'
     weekday  '*'
+    user     'deploy'
     command  "cd /data/tweetingdead/current && RAILS_ENV=staging bundle exec rake twitter:all_offline &"
   end
 
@@ -56,6 +60,7 @@ if ['util'].include?(node[:instance_role])
     day      '*'
     month    '*'
     weekday  '*'
+    user     'deploy'
     command  "cd /data/tweetingdead/current && RAILS_ENV=staging bundle exec rake realtime_streaming:realtime &"
   end
 
@@ -65,6 +70,7 @@ if ['util'].include?(node[:instance_role])
     day      '*'
     month    '*'
     weekday  '*'
+    user     'deploy'
     command  "cd /data/tweetingdead/current && RAILS_ENV=staging bundle exec rake facebook:offline &"
   end
 
@@ -74,6 +80,7 @@ if ['util'].include?(node[:instance_role])
     day      '*'
     month    '*'
     weekday  '*'
+    user     'deploy'
     command  "cd /data/tweetingdead/current && RAILS_ENV=staging bundle exec rake instagram:offline &"
   end
 end  
