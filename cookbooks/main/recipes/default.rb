@@ -53,17 +53,24 @@
 #include_recipe "exim::auth"
 #include_recipe "mongodb"
 
+#uncomment to run the crontab recipe
+include_recipe "crontab"
+
 #uncomment to run the resque recipe
-# include_recipe "resque"
+include_recipe "resque"
 
 #uncomment to run redis.yml recipe
-# include_recipe "redis-yml"
+#include_recipe "redis-yml"
 
 #uncomment to run the resque-scheduler recipe
 # include_recipe "resque-scheduler"
+require_recipe 'ey-open-ports'
 
 #uncomment to run the redis recipe
-#include_recipe "redis"
+include_recipe "redis"
+
+#uncomment to run the juggernaut recipe
+include_recipe "juggernaut"
 
 #uncomment to run the api-keys-yml recipe
 # include_recipe "api-keys-yml"
