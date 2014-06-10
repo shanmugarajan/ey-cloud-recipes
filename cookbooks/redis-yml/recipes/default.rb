@@ -1,4 +1,4 @@
-if ['app_master', 'app'].include?(node[:instance_role])
+if ['util'].include?(node[:instance_role])
 
   # If you have only one utility instance uncomment the line below
   #redis_instance = node['utility_instances'].first
