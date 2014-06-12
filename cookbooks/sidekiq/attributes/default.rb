@@ -11,7 +11,7 @@ default[:sidekiq] = {
   :utility_name => 'sidekiq',
 
   # Number of workers (not threads)
-  :workers => 25,
+  :workers => 10,
 
   # Concurrency
   :concurrency => 100,
