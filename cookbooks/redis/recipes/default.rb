@@ -67,7 +67,7 @@ if ['util'].include?(node[:instance_role])
   end
 end
 
-if ['app', 'app_master'].include?(node[:instance_role])
+if ['solo', 'app', 'app_master', 'util'].include?(node[:instance_role])
   instances = node[:engineyard][:environment][:instances]
   redis_instance = (node[:instance_role][/solo/] && instances.length == 1) ? instances[0] : instances.find{|i| i[:name].to_s[/redis/]}
 
