@@ -11,6 +11,6 @@ if ['solo', 'app', 'app_master', 'util'].include?(node[:instance_role])
     month    '*'
     weekday  '*'
     user     'deploy'
-    command  "cd /data/relatednoise_api/current && RAILS_ENV=#{Rails.env} bundle exec rake twitter:quick_realtime &"
+    command  "cd /data/relatednoise_api/current && RAILS_ENV=staging bundle exec rake twitter:quick_realtime &"
   end
 end
