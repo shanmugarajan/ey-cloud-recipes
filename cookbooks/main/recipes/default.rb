@@ -54,7 +54,7 @@ include_recipe "sidekiq"
 #include_recipe "mongodb"
 
 #uncomment to run the crontab recipe
-#include_recipe "crontab"
+include_recipe "crontab"
 
 #uncomment to run the resque recipe
 #include_recipe "resque"
