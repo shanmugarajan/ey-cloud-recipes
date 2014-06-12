@@ -64,7 +64,7 @@ include_recipe "redis-yml"
 
 #uncomment to run the resque-scheduler recipe
 # include_recipe "resque-scheduler"
-require_recipe 'ey-open-ports'
+#require_recipe 'ey-open-ports'
 
 #uncomment to run the redis recipe
 include_recipe "redis"
