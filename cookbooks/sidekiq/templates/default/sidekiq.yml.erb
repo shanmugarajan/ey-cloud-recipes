@@ -7,3 +7,5 @@
 <% @queues.to_a.each do |q| %>
   - [<%= q.join(', ') %>]
 <% end %>
+:retry: 1
+:logfile: ./log/sidekiq.log
