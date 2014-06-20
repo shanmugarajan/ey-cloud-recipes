@@ -3,7 +3,8 @@
 # Recipe:: default
 #
 
-if ['app_master'].include?(node[:instance_role])
+# This is for application master
+if node[:instance_role] == 'app_master'
   cron "twitter_process_realtime_notifications" do
     minute   '*/1'
     hour     '*'
@@ -25,7 +26,7 @@ if ['app_master'].include?(node[:instance_role])
   end
 end
 
-if ['app'].include?(node[:instance_role])
+if node[:instance_role] == 'app'
   cron "twitter_track_tags_realtime" do
     minute   '*/3'
     hour     '*'
