@@ -3,7 +3,7 @@
 # Recipe:: default
 #
 
-if ['solo', 'app', 'app_master', 'util'].include?(node[:instance_role])
+if ['app_master'].include?(node[:instance_role])
   cron "twitter_process_realtime_notifications" do
     minute   '*/2'
     hour     '*'
@@ -23,7 +23,9 @@ if ['solo', 'app', 'app_master', 'util'].include?(node[:instance_role])
     user     'deploy'
     command  "cd /data/relatednoise_api/current && RAILS_ENV=staging bundle exec rake instagram:data &"
   end
+end
 
+if ['app'].include?(node[:instance_role])
   cron "twitter_track_tags_realtime" do
     minute   '*/5'
     hour     '*'
