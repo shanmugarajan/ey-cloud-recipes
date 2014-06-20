@@ -5,7 +5,7 @@
 
 if ['app_master'].include?(node[:instance_role])
   cron "twitter_process_realtime_notifications" do
-    minute   '*/2'
+    minute   '*/1'
     hour     '*'
     day      '*'
     month    '*'
@@ -27,7 +27,7 @@ end
 
 if ['app'].include?(node[:instance_role])
   cron "twitter_track_tags_realtime" do
-    minute   '*/5'
+    minute   '*/3'
     hour     '*'
     day      '*'
     month    '*'
