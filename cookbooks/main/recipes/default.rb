@@ -17,7 +17,7 @@
 # include_recipe "ban"
 
 # uncomment to use the sidekiq recipe. See cookbooks/sidekiq/readme.md for documentation.
-include_recipe "sidekiq"
+#include_recipe "sidekiq"
 
 #uncomment to turn on memcached
 # include_recipe "memcached"
@@ -64,13 +64,13 @@ include_recipe "redis-yml"
 
 #uncomment to run the resque-scheduler recipe
 # include_recipe "resque-scheduler"
-#require_recipe 'ey-open-ports'
+require_recipe 'ey-open-ports'
 
 #uncomment to run the redis recipe
 include_recipe "redis"
 
 #uncomment to run the juggernaut recipe
-#include_recipe "juggernaut"
+include_recipe "juggernaut"
 
 #uncomment to run the api-keys-yml recipe
 # include_recipe "api-keys-yml"
